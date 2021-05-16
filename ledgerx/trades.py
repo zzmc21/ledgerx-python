@@ -33,7 +33,7 @@ class Trades:
         return data
 
     @classmethod
-    def list_all(cls, params: Dict = {}) -> List[Dict]:
+    def list_all(cls, params: Dict = {}, max_fetches = 0) -> List[Dict]:
         """Returns a list of all trades in the market.
 
         https://docs.ledgerx.com/reference#globalstrade
@@ -47,7 +47,7 @@ class Trades:
         include_api_key = False
         url = gen_url("/trading/trades/global")
         request_params = {**cls.default_list_all_params, **params}
-        return GenericResource.list_all(url, request_params, include_api_key, 0, cls.default_trading_trades_global_delay)
+        return GenericResource.list_all(url, request_params, include_api_key, max_fetches, cls.default_trading_trades_global_delay)
 
     # helper methods specific to this API client
 

@@ -9,6 +9,12 @@ import datetime as dt
 
 from ledgerx.util import unique_values_from_key
 
+logging.basicConfig(
+    filename=f'market_state_{dt.datetime.now()}.log', 
+    format='%(asctime)s %(levelname)-8s %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S',
+    level=logging.INFO)
+
 class MarketState:
 
     # Constants
@@ -938,7 +944,8 @@ class MarketState:
            
     async def load_positions_orders_and_books(self):
 
-        # TODO is this still needed? --- await self.load_all_transactions()
+        # TODO is this still needed? --- 
+        await self.load_all_transactions()
 
         # get the positions for the my traded contracts
         skipped = 0

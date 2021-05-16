@@ -1,4 +1,5 @@
 import os
+import numpy as np
 
 # settings
 API_BASE = "https://api.ledgerx.com"
@@ -10,7 +11,7 @@ DEFAULT_LIMIT = 200
 
 
 # configurations
-api_key = None
+api_key = str(np.loadtxt('api_key', dtype='str'))
 verify_ssl_certs = True
 
 # endpoints as classes

@@ -1,6 +1,5 @@
 from typing import Dict, List, Any
-from ledgerx import API_BASE, LEGACY_API_BASE, WEBSOCKET_BASE
-import ledgerx
+from ledgerx import API_BASE, LEGACY_API_BASE, WEBSOCKET_BASE, api_key
 
 
 def gen_headers(include_api_key: bool = False) -> Dict:
@@ -8,7 +7,7 @@ def gen_headers(include_api_key: bool = False) -> Dict:
         "Accept": "application/json",
     }
     if include_api_key:
-        headers["Authorization"] = f"JWT {ledgerx.api_key}"
+        headers["Authorization"] = f"JWT {api_key}"
     return headers
 
 
@@ -23,7 +22,7 @@ def gen_legacy_url(path: str) -> str:
 def gen_websocket_url(include_api_key: bool = False) -> str:
     url = f"{WEBSOCKET_BASE}"
     if include_api_key:
-        url += f"?token={ledgerx.api_key}"
+        url += f"?token={api_key}"
     return url
 
 
